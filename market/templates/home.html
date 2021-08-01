@@ -1,0 +1,50 @@
+  
+{% extends 'base.html' %}
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block content %}
+<body>
+<style>
+body {
+  background-image: url('static/assets/images/bg.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+</style>
+<div class="col-md-8 p-lg-8 mx-auto my-8 text-center">
+    <h1 class="display-4 font-weight-bold" style="font-family:copperplate;">
+        Welcome to the Book Market!
+    </h1>
+         </p>
+            <br>
+            <div style="background-color:#70453C;">
+            <p align = 'center' style="font-size:190%; font-family:garamond;" >
+                <i><b> “There are books of which the backs and covers are by far the best parts.” </b></i>
+                <br>
+                <i><b> ~Charles Dickens, Oliver Twist </b></i>
+            </p>
+            </div>
+        <br>
+        <p align = 'center' style="font-size:180%; font-family:cambria;">
+            <b> Readers, I know there is less and less space on your bookshelf everytime you decide to dive into a new experience.
+                This is the next best alternative to freeing up space once you're done reading. </b>
+            <br>
+            <b><i> How? </i></b>
+            <br>
+            <b><i> 3 simple steps - Buy, Read and Sell! </i></b>
+            <br>
+            <b>  With the inbuilt budgeting system, you will never overbuy!</b>
+            <br>
+            <b>(and also let others read your book when you're done). </b>
+
+
+        <div class="col-md-8 p-lg-7 mx-auto my-7 text-center" >
+    <p class="lead font-weight-normal" style="font-size:150%; font-family:copperplate;"><b>Start reading by clicking the link below!</b></p>
+    <a class="btn btn-info" href="{{ url_for('market_page') }}"><b>Get Started</b></a>
+        </div>
+    </div>
+</body>
+{% endblock %}

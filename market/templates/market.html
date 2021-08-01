@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}
+Market Page
+{% endblock %}
+{% block content %}
+
+<div class="row" style="margin-top:20px; margin-left:20px">
+   <div class="col-8">
+       <h2 style="font-family:lucida bright">Available Books to read</h2>
+       <p><i><b>Click on one of the books to start buying!</b></i></p>
+       <br>
+      <table class="table table-hover table-dark">
+         <thead>
+            <tr>
+               <!-- Your Columns HERE -->
+               <th scope="col">ID</th>
+               <th scope="col">Name</th>
+               <th scope="col">Author</th>
+               <th scope="col">Price</th>
+               <th scope="col">Options</th>
+            </tr>
+         </thead>
+         <tbody>
+        <style>
+            body {
+              background-image: url('static/assets/images/bg.png');
+              background-repeat: no-repeat;
+              background-attachment: fixed;
+              background-size: cover;
+            }
+        </style>
+            <!-- Your rows inside the table HERE: -->
+            {% for item in items %}
+            {% include 'includes/items_modals.html' %}
+            <tr>
+               <td>{{ item.id }}</td>
+               <td>{{ item.name }}</td>
+               <td>{{ item.author }}</td>
+               <td>${{ item.price }}</td>
+               <td>
+                  <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">More Info</button>
+                  <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Buy this book!</button>
+               </td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </div>
+   <div class="col-4">
+        <h2 style="font-family:lucida bright">OWNED BOOKS</h2>
+       <p><i><b>Click on sell to put the book back on the Market.</b></i></p>
+        <br>
+        <div class="row">
+           {% for owned_item in owned_items %}
+           {% include 'includes/owned_items_modals.html' %}
+             <div class="col-md-5">
+                 <div style="margin-bottom: 5px" class="card text-center bg-dark">
+                      <div class="card-body">
+                          <h5 class="card-title" style="font-family:cambria">{{ owned_item.name }}</h5>
+                          <button type="button" class="btn btn-outline-danger" style="margin-bottom: 5px"
+                                  data-toggle="modal" data-target="#Modal-SellingConfirm-{{ owned_item.id }}">
+                              Sell this Item
+                          </button>
+                          <p class="card-text" style="font-family:cambria"><strong>
+                              PRICE - ${{ owned_item.price }}
+                          </strong></p>
+                      </div>
+                  </div>
+             </div>
+           {% endfor %}
+        </div>
+   </div>
+</div>
+{% endblock %}
